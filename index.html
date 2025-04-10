@@ -16,80 +16,91 @@
             justify-content: center;
             text-decoration: none;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1001;
         }
-        
+
         .button-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.95);
+            padding: 15px 20px;
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin: 30px 0;
-            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
-        
+
         .nav-button {
-            padding: 15px 30px;
+            padding: 12px 25px;
             background-color: #FFCCCB;
             color: #333;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 25px;
             font-weight: bold;
             transition: all 0.3s ease;
             border: 2px solid #e6b3b3;
         }
-        
+
         header {
             background-color: #FFCCCB;
             text-align: center;
-            padding: 40px 20px;
+            padding: 120px 20px 40px;
         }
-        
+
+        body {
+            background-color: #F5F5F5;
+            margin: 0;
+            padding-top: 70px;
+        }
+
         h1, h2 {
             margin: 5px 0;
         }
-        
+
         p, ul {
             font-size: 26px;
-            margin: 20px 0;
-        }
-
-        body {margin: 20px;
-            background-color: #F5F5F5;
-            margin: 0;
+            margin: 20px 40px;
         }
     </style>
 </head>
 <body>
     <a href="index.html" class="home-button-circle">🏠</a>
+    
+    <nav class="button-container">
+        <a href="page1.html" class="nav-button">Why Quantum Computing?</a>
+        <a href="page2.html" class="nav-button">Limitation</a>
+        <a href="page3.html" class="nav-button">Future Trend</a>
+    </nav>
+
     <header>
         <h1>Quantum Computing in Asset Management</h1>
         <h2>Chu Yan Wang 57859522 HUANG Peiyu 58534092 Wong Ying Man 58541544 Wong Man Long 58542307</h2>
     </header>
-    
-    <div class="button-container">
-        <a href="page1.html" class="nav-button">Why Should We Apply Quantum Computing in Asset Management?</a>
-        <a href="page2.html" class="nav-button">Limitation</a>
-        <a href="page3.html" class="nav-button">Future Trend</a>
+
+    <div>
+        <p>Quantum computing is an emerging technology that uses quantum mechanics to solve complex problems faster than classical computers. In asset management, it shows promise for optimizing investment portfolios, analyzing risks, and pricing derivatives, areas critical for managing financial assets effectively.</p>
+
+        <h2>Applications and Algorithms</h2>
+        <ul>
+            <li><b>Portfolio Optimization</b>: Algorithms like the Quantum Approximate Optimization Algorithm (QAOA), Variational Quantum Eigensolver (VQE), and Quantum Walk Optimization Algorithm (QWOA) help find optimal investment mixes, potentially speeding up solutions for large markets.</li>
+            <li><b>Risk Analysis</b>: Amplitude estimation can calculate risk measures like Value at Risk (VaR) and Conditional Value at Risk (CVaR), offering a quadratic speed-up over classical Monte Carlo simulations.</li>
+            <li><b>Derivative Pricing</b>: Methods like Quantum Signal Processing (QSP) and amplitude estimation reduce resource needs, enhancing the pricing of financial derivatives.</li>
+        </ul>
+
+        <h2>What is Asset Management?</h2>
+        <p>Asset management is to use money to invest in different assets, in order to maximize the amount of money and minimize risk over a period of time which is usually long. Types of assets can be classified to financial assets and tangible assets. Examples for financial assets includes bonds, shares etc. It’s a non-physical asset that gets its value from a contract or ownership.</p>
+
+        <h2>Who carries out asset management?</h2>
+        <p>Most common fee in the industry is to charge around 1% of the amount invested up to 1 million. The higher the amount is invested, the charging percentage would decrease accordingly. Other methods are to collect a lump sum fee per trade or to collect commissions for upsells.</p>
+
+        <h2>Why different portfolio exist?</h2>
+        <p>The average risks of financial assets in the portfolio will be adjusted according to the investor’s needs. For example, if the investor’s goal is to use the sum of money for retirement, then they would want to take less risk as they can’t risk to lose the money. But For younger investors who just want to increase their wealth, they would want to take more risks as they are not afraid to lose the sum of money and taking more risk means higher potential income.</p>
+
+        <h2>What is the cost of asset management?</h2>
+        <p>Most common fee in the industry is to charge around 1% of the amount invested up to 1 million. The higher the amount is invested, the charging percentage would decrease accordingly. Other methods are to collect a lump sum fee per trade or to collect commissions for upsells.</p>
     </div>
-
-    <p>Quantum computing is an emerging technology that uses quantum mechanics to solve complex problems faster than classical computers. In asset management, it shows promise for optimizing investment portfolios, analyzing risks, and pricing derivatives, areas critical for managing financial assets effectively.</p>
-
-    <h2>Applications and Algorithms</h2>
-    <ul>
-        <li><b>Portfolio Optimization</b>: Algorithms like the Quantum Approximate Optimization Algorithm (QAOA), Variational Quantum Eigensolver (VQE), and Quantum Walk Optimization Algorithm (QWOA) help find optimal investment mixes, potentially speeding up solutions for large markets.</li>
-        <li><b>Risk Analysis</b>: Amplitude estimation can calculate risk measures like Value at Risk (VaR) and Conditional Value at Risk (CVaR), offering a quadratic speed-up over classical Monte Carlo simulations.</li>
-        <li><b>Derivative Pricing</b>: Methods like Quantum Signal Processing (QSP) and amplitude estimation reduce resource needs, enhancing the pricing of financial derivatives.</li>
-    </ul>
-
-    <h2>What is Asset Management?</h2>
-    <p>Asset management is to use money to invest in different assets, in order to maximize the amount of money and minimize risk over a period of time which is usually long. Types of assets can be classified to financial assets and tangible assets. Examples for financial assets includes bonds, shares etc. It’s a non-physical asset that gets its value from a contract or ownership.</p>
-
-    <h2>Who carries out asset management?</h2>
-    <p>Most common fee in the industry is to charge around 1% of the amount invested up to 1 million. The higher the amount is invested, the charging percentage would decrease accordingly. Other methods are to collect a lump sum fee per trade or to collect commissions for upsells.</p>
-
-    <h2>Why different portfolio exist?</h2>
-    <p>The average risks of financial assets in the portfolio will be adjusted according to the investor’s needs. For example, if the investor’s goal is to use the sum of money for retirement, then they would want to take less risk as they can’t risk to lose the money. But For younger investors who just want to increase their wealth, they would want to take more risks as they are not afraid to lose the sum of money and taking more risk means higher potential income.</p>
-
-    <h2>What is the cost of asset management?</h2>
-    <p>Most common fee in the industry is to charge around 1% of the amount invested up to 1 million. The higher the amount is invested, the charging percentage would decrease accordingly. Other methods are to collect a lump sum fee per trade or to collect commissions for upsells.</p>
 </body>
 </html>
