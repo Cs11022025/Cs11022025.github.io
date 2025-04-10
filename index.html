@@ -4,18 +4,21 @@
 <head>
     <title>Quantum Computing in Asset Management</title>
     <style>
-        .home-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            background-color: #ff6666; 
-            color: white;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            z-index: 1000; 
-            border: 2px solid #ff4d4d;
+      <style>
+    .home-button-circle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #FFCCCB;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
         .button-container {
             display: flex;
             justify-content: center;
@@ -34,7 +37,11 @@
             border: 2px solid #e6b3b3;
         }
         
-        header {background-color: #FFCCCB;}
+        header {background-color: #FFCCCB;
+                background-color: #FFCCCB;
+            text-align: center;
+            padding: 40px 20px;
+        }}
         p {font-size: 26px;}
         ul{font-size: 26px;}
         body { background-color: #F5F5F5; }
