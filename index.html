@@ -37,11 +37,10 @@
             padding: 12px 25px;
             background-color: #FFCCCB;
             color: #333;
+            text-decoration: none;
             border-radius: 25px;
-            font-weight: bold;
             transition: all 0.3s ease;
             border: 2px solid #e6b3b3;
-            text-decoration: none;
         }
 
         header {
@@ -54,7 +53,6 @@
             background-color: #F5F5F5;
             margin: 0;
             padding-top: 70px;
-            font-family: Arial, sans-serif;
         }
 
         h1, h2 {
@@ -65,19 +63,33 @@
             font-size: 26px;
             margin: 20px 40px;
         }
-
-        .quiz-button {
+         .content-button {
             display: block;
-            margin: 40px auto;
-            padding: 12px 25px;
-            background-color: #FFCCCB;
+            margin: 30px 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #FFCCCB;
+            text-decoration: none;
             color: #333;
-            border-radius: 25px;
-            font-weight: bold;
-            border: 2px solid #e6b3b3;
-            cursor: pointer;
-            font-size: 18px;
-            width: fit-content;
+        }
+
+        .content-button h3 {
+            margin-top: 0;
+            color: #d65a5a;
+        }
+
+        .content-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-left: 5px solid #d65a5a;
+            background-color: #f9f9f9;
+        }
+ .content-button p {
+            margin: 15px 0 0 0;
+            font-size: 22px;
         }
     </style>
 </head>
