@@ -229,7 +229,7 @@
 }
 </style>
 
-<!-- 右下角 qubit 動畫，有閃爍粒子特效 -->
+<!-- qubit -->
 <div class="qubit-ani">
   <canvas id="qubitAnim" width="220" height="220"></canvas>
 </div>
@@ -269,7 +269,7 @@ window.addEventListener("resize", resizeQubit);
 
 let t = 0;
 
-// 粒子參數
+
 const PARTICLE_COUNT = 18;
 let particles = [];
 function initParticles() {
@@ -292,7 +292,7 @@ function drawQubit() {
   let w = canvas.width, h = canvas.height, r = w * 0.44;
   ctx.clearRect(0,0,w,h);
 
-  // 主球體
+
   let grad = ctx.createRadialGradient(w/2, h/2, r*0.24, w/2, h/2, r);
   grad.addColorStop(0, "#fafdff");
   grad.addColorStop(0.5, "#94d8fa");
@@ -305,7 +305,7 @@ function drawQubit() {
   ctx.fill();
   ctx.shadowBlur = 0;
 
-  // 旋轉動態波紋
+
   for(let i=0; i<3; i++) {
     ctx.save();
     ctx.translate(w/2, h/2);
@@ -324,7 +324,7 @@ function drawQubit() {
     ctx.restore();
   }
 
-  // 旋轉橢圓軌跡 + 電子
+
   ctx.save();
   ctx.translate(w/2, h/2);
   ctx.rotate(t*0.8);
@@ -335,7 +335,7 @@ function drawQubit() {
   ctx.globalAlpha = 0.62;
   ctx.stroke();
   ctx.globalAlpha = 1;
-  // 小電子
+
   ctx.beginPath();
   let ex = Math.cos(t*1.6)*r*0.93, ey = Math.sin(t*1.6)*r*0.38;
   ctx.arc(ex, ey, w*0.06, 0, Math.PI*2);
@@ -346,7 +346,6 @@ function drawQubit() {
   ctx.shadowBlur = 0;
   ctx.restore();
 
-  // 球體高光
   ctx.save();
   ctx.globalAlpha = 0.23;
   ctx.beginPath();
@@ -355,7 +354,7 @@ function drawQubit() {
   ctx.fill();
   ctx.restore();
 
-  // --- 閃爍粒子 ---
+ 
   for(let i=0;i<particles.length;i++) {
     let p = particles[i];
     p.angle += p.speed * 0.008;
