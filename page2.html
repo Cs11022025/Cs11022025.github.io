@@ -228,3 +228,83 @@
   }
 }
 </style>
+<!-- 你可以放係 body 最尾，唔會頂住內容 -->
+<div class="quantum-animation">
+  <canvas id="quantumSphere" width="160" height="160"></canvas>
+</div>
+
+<style>
+.quantum-animation {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 10;
+  width: 160px;
+  height: 160px;
+  pointer-events: none; /* 唔會遮住你啲內容 */
+  opacity: 0.92;
+}
+@media (max-width: 700px) {
+  .quantum-animation {
+    right: 10px;
+    bottom: 10px;
+    width: 88px;
+    height: 88px;
+  }
+}
+</style>
+
+<script>
+const canvas = document.getElementById("quantumSphere");
+const ctx = canvas.getContext("2d");
+let angle = 0;
+
+// Responsive
+function resizeSphere() {
+  let size = window.innerWidth < 700 ? 88 : 160;
+  canvas.width = size;
+  canvas.height = size;
+}
+resizeSphere();
+window.addEventListener("resize", resizeSphere);
+
+function drawQuantumSphere() {
+  let w = canvas.width, h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+  // Draw main sphere
+  let g = ctx.createRadialGradient(w/2, h/2, 18, w/2, h/2, w/2-2);
+  g.addColorStop(0, "#eaf3ff");
+  g.addColorStop(0.7, "#6db1ff");
+  g.addColorStop(1, "#4766b8");
+  ctx.beginPath();
+  ctx.arc(w/2, h/2, w/2-6, 0, Math.PI*2);
+  ctx.fillStyle = g;
+  ctx.fill();
+
+  // Draw quantum orbits (3 layers)
+  for(let i=0; i<3; i++) {
+    ctx.save();
+    ctx.translate(w/2, h/2);
+    ctx.rotate(angle + i*Math.PI/3);
+    ctx.beginPath();
+    ctx.ellipse(0, 0, w/2-12, w/2-32, 0, 0, Math.PI*2);
+    ctx.strokeStyle = ["#68cafc","#b18aff","#8ae9fc"][i];
+    ctx.lineWidth = 2;
+    ctx.globalAlpha = 0.7;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    // Draw moving electron
+    let rad = w/2-12, ex = Math.cos(angle*1.3 + i*2)*rad*0.95, ey = Math.sin(angle*1.3 + i*2)*(rad-18)*0.95;
+    ctx.beginPath();
+    ctx.arc(ex, ey, 7, 0, Math.PI*2);
+    ctx.fillStyle = ["#61b4fa","#a088f8","#65e2f9"][i];
+    ctx.shadowBlur = 8; ctx.shadowColor = "#b7e2ff";
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.restore();
+  }
+  angle += 0.017;
+  requestAnimationFrame(drawQuantumSphere);
+}
+drawQuantumSphere();
+</script>
