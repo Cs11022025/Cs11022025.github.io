@@ -63,7 +63,7 @@
             font-size: 26px;
             margin: 20px 40px;
         }
-         back-to-top {
+         #back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -76,13 +76,13 @@
         }
     </style>
     <script>
-        window.onscroll = function() {
+       window.onscroll = function() {
             if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
                 document.getElementById("back-to-top").style.display = "block";
             } else {
                 document.getElementById("back-to-top").style.display = "none";
             }
-        }
+        };
     </script>
 </head>
 <body>
