@@ -228,83 +228,130 @@
   }
 }
 </style>
-<!-- 你可以放係 body 最尾，唔會頂住內容 -->
-<div class="quantum-animation">
-  <canvas id="quantumSphere" width="160" height="160"></canvas>
+<!-- 右下角動畫Quantum Computer（可直接貼落body最底） -->
+<div class="quantum-pc-ani">
+  <canvas id="quantumPC" width="170" height="170"></canvas>
 </div>
 
 <style>
-.quantum-animation {
+.quantum-pc-ani {
   position: fixed;
-  right: 32px;
-  bottom: 32px;
-  z-index: 10;
-  width: 160px;
-  height: 160px;
-  pointer-events: none; /* 唔會遮住你啲內容 */
-  opacity: 0.92;
+  right: 30px;
+  bottom: 28px;
+  z-index: 20;
+  width: 170px;
+  height: 170px;
+  pointer-events: none;
+  opacity: 0.95;
 }
 @media (max-width: 700px) {
-  .quantum-animation {
-    right: 10px;
-    bottom: 10px;
-    width: 88px;
-    height: 88px;
+  .quantum-pc-ani {
+    right: 8px;
+    bottom: 8px;
+    width: 90px;
+    height: 90px;
   }
 }
 </style>
 
 <script>
-const canvas = document.getElementById("quantumSphere");
-const ctx = canvas.getContext("2d");
-let angle = 0;
+const quantumPC = document.getElementById("quantumPC");
+const qctx = quantumPC.getContext("2d");
+let qAngle = 0;
 
-// Responsive
-function resizeSphere() {
-  let size = window.innerWidth < 700 ? 88 : 160;
-  canvas.width = size;
-  canvas.height = size;
+function resizeQPC() {
+  let size = window.innerWidth < 700 ? 90 : 170;
+  quantumPC.width = size;
+  quantumPC.height = size;
 }
-resizeSphere();
-window.addEventListener("resize", resizeSphere);
+resizeQPC();
+window.addEventListener("resize", resizeQPC);
 
-function drawQuantumSphere() {
-  let w = canvas.width, h = canvas.height;
-  ctx.clearRect(0, 0, w, h);
-  // Draw main sphere
-  let g = ctx.createRadialGradient(w/2, h/2, 18, w/2, h/2, w/2-2);
-  g.addColorStop(0, "#eaf3ff");
-  g.addColorStop(0.7, "#6db1ff");
-  g.addColorStop(1, "#4766b8");
-  ctx.beginPath();
-  ctx.arc(w/2, h/2, w/2-6, 0, Math.PI*2);
-  ctx.fillStyle = g;
-  ctx.fill();
+function drawQuantumPC() {
+  let w = quantumPC.width, h = quantumPC.height, cx = w/2, cy = h/2;
+  qctx.clearRect(0,0,w,h);
 
-  // Draw quantum orbits (3 layers)
-  for(let i=0; i<3; i++) {
-    ctx.save();
-    ctx.translate(w/2, h/2);
-    ctx.rotate(angle + i*Math.PI/3);
-    ctx.beginPath();
-    ctx.ellipse(0, 0, w/2-12, w/2-32, 0, 0, Math.PI*2);
-    ctx.strokeStyle = ["#68cafc","#b18aff","#8ae9fc"][i];
-    ctx.lineWidth = 2;
-    ctx.globalAlpha = 0.7;
-    ctx.stroke();
-    ctx.globalAlpha = 1;
-    // Draw moving electron
-    let rad = w/2-12, ex = Math.cos(angle*1.3 + i*2)*rad*0.95, ey = Math.sin(angle*1.3 + i*2)*(rad-18)*0.95;
-    ctx.beginPath();
-    ctx.arc(ex, ey, 7, 0, Math.PI*2);
-    ctx.fillStyle = ["#61b4fa","#a088f8","#65e2f9"][i];
-    ctx.shadowBlur = 8; ctx.shadowColor = "#b7e2ff";
-    ctx.fill();
-    ctx.shadowBlur = 0;
-    ctx.restore();
+  // -- 旋轉主體 --
+  qctx.save();
+  qctx.translate(cx, cy+8);
+  qctx.rotate(qAngle);
+
+  // 主體外殼
+  qctx.beginPath();
+  qctx.ellipse(0, 0, w*0.32, h*0.18, 0, 0, Math.PI*2);
+  qctx.fillStyle = "#e6f3fa";
+  qctx.shadowColor = "#b3e0ff";
+  qctx.shadowBlur = 12;
+  qctx.fill();
+  qctx.shadowBlur = 0;
+
+  // 主體方塊
+  qctx.beginPath();
+  qctx.moveTo(-w*0.23, -h*0.12);
+  qctx.lineTo(w*0.23, -h*0.12);
+  qctx.lineTo(w*0.17, h*0.11);
+  qctx.lineTo(-w*0.17, h*0.11);
+  qctx.closePath();
+  qctx.fillStyle = "#f4fcff";
+  qctx.strokeStyle = "#3783b8";
+  qctx.lineWidth = 3;
+  qctx.fill();
+  qctx.stroke();
+
+  // 芯片(正方形)
+  qctx.save();
+  qctx.translate(0, -h*0.02);
+  qctx.rotate(-qAngle*2);
+  qctx.beginPath();
+  qctx.rect(-w*0.06, -h*0.05, w*0.12, h*0.10);
+  qctx.fillStyle = "#68cafc";
+  qctx.shadowColor = "#b4f0fc";
+  qctx.shadowBlur = 8;
+  qctx.fill();
+  qctx.shadowBlur = 0;
+  // 小點
+  qctx.beginPath();
+  qctx.arc(0, 0, w*0.022, 0, Math.PI*2);
+  qctx.fillStyle = "#fff";
+  qctx.fill();
+  qctx.restore();
+
+  // 幾條金線
+  for(let i=0;i<5;i++){
+    let ang = (-0.6+0.3*i);
+    qctx.beginPath();
+    qctx.moveTo(0, -h*0.02);
+    qctx.lineTo(Math.cos(ang)*w*0.09, Math.sin(ang)*h*0.06+2);
+    qctx.strokeStyle = "#eec74b";
+    qctx.lineWidth = 2;
+    qctx.stroke();
   }
-  angle += 0.017;
-  requestAnimationFrame(drawQuantumSphere);
+
+  // 裝飾LED燈
+  for(let i=0; i<4; i++) {
+    let ldx = Math.cos(Math.PI/2*i)*w*0.18;
+    let ldy = Math.sin(Math.PI/2*i)*h*0.07 + 1;
+    qctx.beginPath();
+    qctx.arc(ldx, ldy, w*0.024, 0, Math.PI*2);
+    qctx.fillStyle = i%2==0 ? "#b9f8c9" : "#e7c0fc";
+    qctx.globalAlpha = 0.72;
+    qctx.fill();
+    qctx.globalAlpha = 1;
+  }
+
+  qctx.restore();
+
+  // 下方光影
+  let grad = qctx.createRadialGradient(cx, cy+h*0.28, 1, cx, cy+h*0.28, w*0.23);
+  grad.addColorStop(0, "#bfe2fb88");
+  grad.addColorStop(1, "#fff0");
+  qctx.beginPath();
+  qctx.ellipse(cx, cy+h*0.28, w*0.21, h*0.06, 0, 0, Math.PI*2);
+  qctx.fillStyle = grad;
+  qctx.fill();
+
+  qAngle += 0.013;
+  requestAnimationFrame(drawQuantumPC);
 }
-drawQuantumSphere();
+drawQuantumPC();
 </script>
