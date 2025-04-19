@@ -131,7 +131,7 @@
 
 .limitation-square:hover {
   box-shadow: 0 8px 28px 0 #f2c2d6a0;
-  border-color: #e5b2c6; /* hover少少深色粉紅 */
+  border-color: #e5b2c6; 
 }
 
 .limitation-square strong {
@@ -193,8 +193,8 @@
   max-width: 1200px;
 }
 .future-square {
-  background: #fff; /* 白色底 */
-  border: 2.5px solid #8ad0f7; /* 淺藍色邊 */
+  background: #fff; 
+  border: 2.5px solid #8ad0f7; 
   border-radius: 18px;
   box-shadow: 0 4px 18px 0 #b2d0e540;
   padding: 22px 20px 18px 22px;
@@ -209,7 +209,7 @@
   border-color: #1b8ad8;
 }
 .future-square strong {
-  color: #2678b6; /* 中藍色做標題 */
+  color: #2678b6; 
   font-size: 1.13em;
   margin-bottom: 12px;
   font-weight: 700;
@@ -228,7 +228,7 @@
   }
 }
 </style>
-<!-- 右下角 qubit 動畫，有閃爍粒子特效 -->
+<!-- qubit >
 <div class="qubit-ani">
   <canvas id="qubitAnim" width="220" height="220"></canvas>
 </div>
@@ -268,7 +268,7 @@ window.addEventListener("resize", resizeQubit);
 
 let t = 0;
 
-// 粒子參數
+// 參數
 const PARTICLE_COUNT = 18;
 let particles = [];
 function initParticles() {
