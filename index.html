@@ -65,6 +65,43 @@
         }
         }
     </style>
+    <script>
+function startQuiz() {
+  const questions = [
+    {
+      question: "What's the typical asset management fee for small portfolios?",
+      options: ["A) 0.5%", "B) 1%", "C) 2%", "D) 5%"],
+      answer: "B"
+    },
+    {
+      question: "Which quantum algorithm helps optimize portfolios?",
+      options: ["A) Shor's", "B) Grover's", "C) QAOA", "D) Deutsch-Jozsa"],
+      answer: "C"
+    },
+    {
+      question: "Why do different investment portfolios exist?",
+      options: ["A) Different risk levels", "B) Different bank requirements", 
+               "C) Government rules", "D) All portfolios are the same"],
+      answer: "A"
+    }
+  ];
+
+  let score = 0;
+
+  questions.forEach((q, i) => {
+    const userInput = prompt(`Question ${i+1}: ${q.question}\n\n${q.options.join('\n')}\n\nEnter A, B, C, or D`);
+    
+    if (userInput && userInput.toUpperCase() === q.answer) {
+      score++;
+      alert("✅ Correct!");
+    } else {
+      alert(`❌ The correct answer was ${q.answer}`);
+    }
+  });
+
+  alert(`Quiz complete!\n\nYour score: ${score}/${questions.length}\n${score === questions.length ? "Perfect! 🎉" : score > 1 ? "Good job!" : "Keep studying!"}`);
+}
+</script>
 </head>
 <body>
     <a href="index.html" class="home-button-circle">🏠</a>
@@ -101,5 +138,13 @@
         <h2>What is the cost of asset management?</h2>
         <p>Most common fee in the industry is to charge around 1% of the amount invested up to 1 million. The higher the amount is invested, the charging percentage would decrease accordingly. Other methods are to collect a lump sum fee per trade or to collect commissions for upsells.</p>
     </div>
+    <button onclick="showQuiz()" 
+        style="padding: 10px 15px; 
+               background: #FFCCCB; 
+               border: none;
+               border-radius: 5px;
+               cursor: pointer;">
+    Test Your Knowledge (Quiz)
+</button>
 </body>
 </html>
