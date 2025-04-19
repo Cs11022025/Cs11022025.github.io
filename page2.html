@@ -158,3 +158,76 @@
 </style>
 }
 </style>
+    <h2 style="margin-top:48px;">Future Trend</h2>
+<div class="future-grid">
+  <div class="future-square">
+    <strong>1. Hybrid Quantum-Classical Models</strong>
+    <p>
+      New approaches allow quantum and traditional computers to work together, reducing problem sizes and making quantum computing more practical.
+    </p>
+  </div>
+  <div class="future-square">
+    <strong>2. Advances in Quantum Hardware</strong>
+    <p>
+      Improvements like error correction and fault-tolerance will make quantum computers more reliable and capable of complex tasks.
+    </p>
+  </div>
+  <div class="future-square">
+    <strong>3. AI and Automation in DAM</strong>
+    <p>
+      AI and machine learning will automate processes like tagging and organizing, increasing efficiency and reducing manual work.
+    </p>
+  </div>
+  <div class="future-square">
+    <strong>4. Decentralized and Secure Systems</strong>
+    <p>
+      Integrating blockchain with DAM may create more secure, transparent systems. Developing quantum-safe encryption will protect sensitive data.
+    </p>
+  </div>
+</div>
+
+<style>
+/* Future Trend 四方格 */
+.future-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
+  margin: 32px 0 0 0;
+  max-width: 1200px;
+}
+.future-square {
+  background: #ecf7fe; /* 超淺藍色做底 */
+  border: 2.5px solid #b5e3fa; /* 淺藍邊 */
+  border-radius: 18px;
+  box-shadow: 0 4px 18px 0 #b2d0e540;
+  padding: 22px 20px 18px 22px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.future-square:hover {
+  box-shadow: 0 8px 28px 0 #aee6ff90;
+  border-color: #6ec5e9;
+}
+.future-square strong {
+  color: #258db2; /* 深藍青色做標題 */
+  font-size: 1.13em;
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.future-square p {
+  margin: 0;
+  color: #2e4053;
+  font-size: 1.04em;
+  line-height: 1.55;
+}
+@media (max-width: 700px) {
+  .future-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+</style>
