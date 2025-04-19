@@ -41,6 +41,7 @@
             font-weight: bold;
             transition: all 0.3s ease;
             border: 2px solid #e6b3b3;
+            text-decoration: none;
         }
 
         header {
@@ -53,6 +54,7 @@
             background-color: #F5F5F5;
             margin: 0;
             padding-top: 70px;
+            font-family: Arial, sans-serif;
         }
 
         h1, h2 {
@@ -63,45 +65,21 @@
             font-size: 26px;
             margin: 20px 40px;
         }
+
+        .quiz-button {
+            display: block;
+            margin: 40px auto;
+            padding: 12px 25px;
+            background-color: #FFCCCB;
+            color: #333;
+            border-radius: 25px;
+            font-weight: bold;
+            border: 2px solid #e6b3b3;
+            cursor: pointer;
+            font-size: 18px;
+            width: fit-content;
         }
     </style>
-    <script>
-function startQuiz() {
-  const questions = [
-    {
-      question: "What's the typical asset management fee for small portfolios?",
-      options: ["A) 0.5%", "B) 1%", "C) 2%", "D) 5%"],
-      answer: "B"
-    },
-    {
-      question: "Which quantum algorithm helps optimize portfolios?",
-      options: ["A) Shor's", "B) Grover's", "C) QAOA", "D) Deutsch-Jozsa"],
-      answer: "C"
-    },
-    {
-      question: "Why do different investment portfolios exist?",
-      options: ["A) Different risk levels", "B) Different bank requirements", 
-               "C) Government rules", "D) All portfolios are the same"],
-      answer: "A"
-    }
-  ];
-
-  let score = 0;
-
-  questions.forEach((q, i) => {
-    const userInput = prompt(`Question ${i+1}: ${q.question}\n\n${q.options.join('\n')}\n\nEnter A, B, C, or D`);
-    
-    if (userInput && userInput.toUpperCase() === q.answer) {
-      score++;
-      alert("✅ Correct!");
-    } else {
-      alert(`❌ The correct answer was ${q.answer}`);
-    }
-  });
-
-  alert(`Quiz complete!\n\nYour score: ${score}/${questions.length}\n${score === questions.length ? "Perfect! 🎉" : score > 1 ? "Good job!" : "Keep studying!"}`);
-}
-</script>
 </head>
 <body>
     <a href="index.html" class="home-button-circle">🏠</a>
@@ -127,24 +105,59 @@ function startQuiz() {
         </ul>
 
         <h2>What is Asset Management?</h2>
-        <p>Asset management is to use money to invest in different assets, in order to maximize the amount of money and minimize risk over a period of time which is usually long. Types of assets can be classified to financial assets and tangible assets. Examples for financial assets includes bonds, shares etc. It’s a non-physical asset that gets its value from a contract or ownership.</p>
+        <p>Asset management is to use money to invest in different assets, in order to maximize the amount of money and minimize risk over a period of time which is usually long. Types of assets can be classified to financial assets and tangible assets. Examples for financial assets includes bonds, shares etc. It's a non-physical asset that gets its value from a contract or ownership.</p>
 
         <h2>Who carries out asset management?</h2>
         <p>Most common fee in the industry is to charge around 1% of the amount invested up to 1 million. The higher the amount is invested, the charging percentage would decrease accordingly. Other methods are to collect a lump sum fee per trade or to collect commissions for upsells.</p>
 
         <h2>Why different portfolio exist?</h2>
-        <p>The average risks of financial assets in the portfolio will be adjusted according to the investor’s needs. For example, if the investor’s goal is to use the sum of money for retirement, then they would want to take less risk as they can’t risk to lose the money. But For younger investors who just want to increase their wealth, they would want to take more risks as they are not afraid to lose the sum of money and taking more risk means higher potential income.</p>
+        <p>The average risks of financial assets in the portfolio will be adjusted according to the investor's needs. For example, if the investor's goal is to use the sum of money for retirement, then they would want to take less risk as they can't risk to lose the money. But For younger investors who just want to increase their wealth, they would want to take more risks as they are not afraid to lose the sum of money and taking more risk means higher potential income.</p>
 
         <h2>What is the cost of asset management?</h2>
         <p>Most common fee in the industry is to charge around 1% of the amount invested up to 1 million. The higher the amount is invested, the charging percentage would decrease accordingly. Other methods are to collect a lump sum fee per trade or to collect commissions for upsells.</p>
     </div>
-    <button onclick="showQuiz()" 
-        style="padding: 10px 15px; 
-               background: #FFCCCB; 
-               border: none;
-               border-radius: 5px;
-               cursor: pointer;">
-    Test Your Knowledge (Quiz)
-</button>
+
+    <button class="quiz-button" onclick="startQuiz()">Test Your Knowledge (Quiz)</button>
+
+    <script>
+        function startQuiz() {
+            const questions = [
+                {
+                    question: "What's the typical asset management fee for small portfolios?",
+                    options: ["A) 0.5%", "B) 1%", "C) 2%", "D) 5%"],
+                    answer: "B"
+                },
+                {
+                    question: "Which quantum algorithm helps optimize portfolios?",
+                    options: ["A) Shor's", "B) Grover's", "C) QAOA", "D) Deutsch-Jozsa"],
+                    answer: "C"
+                },
+                {
+                    question: "Why do different investment portfolios exist?",
+                    options: ["A) Different risk levels", "B) Different bank requirements", 
+                            "C) Government rules", "D) All portfolios are the same"],
+                    answer: "A"
+                }
+            ];
+
+            let score = 0;
+
+            questions.forEach((q, i) => {
+                const userInput = prompt(`Question ${i+1}: ${q.question}\n\n${q.options.join('\n')}\n\nEnter A, B, C, or D`);
+                
+                if (userInput && userInput.toUpperCase() === q.answer) {
+                    score++;
+                    alert("✅ Correct!");
+                } else {
+                    alert(`❌ The correct answer was ${q.answer}`);
+                }
+            });
+
+            alert(`Quiz complete!\n\nYour score: ${score}/${questions.length}\n${
+                score === questions.length ? "Perfect! 🎉" : 
+                score > 1 ? "Good job!" : "Keep studying!"
+            }`);
+        }
+    </script>
 </body>
 </html>
