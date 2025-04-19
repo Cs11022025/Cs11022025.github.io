@@ -78,57 +78,72 @@
         <h1>Quantum Computing in Asset Management</h1>
         <h2>Chu Yan Wang 57859522 HUANG Peiyu 58534092 Wong Ying Man 58541544 Wong Man Long 58542307</h2>
     </header>
-
-     <h2>4. Limitation</h2>
-
-<div class="limitation-card">
-  <strong>Scalability Issues</strong>
-  <p>
-    DAM systems often struggle with the rapid growth of digital assets. Quantum computing faces hardware limits that make scaling a challenge.
-  </p>
+<h2>Limitation</h2>
+<div class="limitation-grid">
+  <div class="limitation-square">
+    <strong>1. Scalability Issues</strong>
+    <p>
+      DAM systems often struggle with the rapid growth of digital assets. Quantum computing faces hardware limits that make scaling a challenge.
+    </p>
+  </div>
+  <div class="limitation-square">
+    <strong>2. Integration Challenges</strong>
+    <p>
+      Integrating DAM with other systems like CMS or CRM is complex and expensive. Quantum systems need to work with classical computers to overcome their limits.
+    </p>
+  </div>
+  <div class="limitation-square">
+    <strong>3. Uncertainty in Quantum Systems</strong>
+    <p>
+      Quantum computers operate on probabilities instead of fixed outcomes, causing difficulties in precise financial tasks and regulatory reporting.
+    </p>
+  </div>
+  <div class="limitation-square">
+    <strong>4. Regulation and Security</strong>
+    <p>
+      Centralized DAM systems can fall prey to cyberattacks. Quantum computing may threaten current encryption, raising security concerns.
+    </p>
+  </div>
 </div>
-
-<div class="limitation-card">
-  <strong>Integration Challenges</strong>
-  <p>
-    Integrating DAM with other systems like CMS or CRM is complex and expensive. Quantum systems need to work with classical computers to overcome their limits.
-  </p>
-</div>
-
-<div class="limitation-card">
-  <strong>Uncertainty in Quantum Systems</strong>
-  <p>
-    Quantum computers operate on probabilities instead of fixed outcomes, causing difficulties in precise financial tasks and regulatory reporting.
-  </p>
-</div>
-
-<div class="limitation-card">
-  <strong>Regulation and Security</strong>
-  <p>
-    Centralized DAM systems can fall prey to cyberattacks. Quantum computing may threaten current encryption, raising security concerns.
-  </p>
-</div>
-
 
 <style>
-.limitation-card {
-  background: #f9f6ff;
-  border-left: 6px solid #a389d4;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px #eee;
-  padding: 18px 24px;
-  margin: 24px 0;
-  max-width: 900px;
+.limitation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 28px;
+  margin: 32px 0;
+  max-width: 1100px;
 }
-.limitation-card strong {
+.limitation-square {
+  background: #ffe8ef;
+  border: 1.5px solid #f5c8da;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #f8dbe6a0;
+  padding: 24px 18px 18px 18px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: box-shadow 0.2s;
+}
+.limitation-square:hover {
+  box-shadow: 0 4px 24px #ecb6c5a6;
+}
+.limitation-square strong {
+  color: #c94d7f;
   font-size: 1.15em;
-  display: block;
-  margin-bottom: 8px;
-  color: #5d3392;
+  margin-bottom: 10px;
 }
-.limitation-card p {
+.limitation-square p {
   margin: 0;
-  font-size: 1.05em;
-  color: #222;
+  color: #4a2222;
+  font-size: 1.04em;
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .limitation-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 </style>
