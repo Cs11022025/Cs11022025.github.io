@@ -142,7 +142,18 @@ types of assets.</p>
         <p>Most common fee in the industry is to charge around 1% of the amount invested up to 1 million. The higher the amount is invested, the charging percentage would decrease accordingly. Other methods are to collect a lump sum fee per trade or to collect commissions for upsells.</p>
     </div>
 
-    <button class="quiz-button" onclick="startQuiz()">Test Your Knowledge (Quiz)</button>
+    <button onclick="startQuiz()" 
+        style="display: block;
+               margin: 20px auto;
+               padding: 12px 25px;
+               background-color: #FFCCCB;
+               color: #333;
+               border-radius: 25px;
+               border: 2px solid #e6b3b3;
+               cursor: pointer;
+               font-weight: bold;">
+    Take Quick Quiz
+</button>
 
     <script>
         function startQuiz() {
@@ -180,7 +191,7 @@ types of assets.</p>
 
             alert(`Quiz complete!\n\nYour score: ${score}/${questions.length}\n${
                 score === questions.length ? "Perfect! 🎉" : 
-                score > 1 ? "Good job!" : "Keep studying!"
+                score > 1 ? "Good job!" : "Read our page !!!"
             }`);
         }
     </script>
