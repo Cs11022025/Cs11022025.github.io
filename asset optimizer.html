@@ -53,7 +53,6 @@
     </header>
 </head>
 <body>
-    <!-- Quantum Portfolio Optimizer -->
     <div class="tool-container">
         <h2>Quantum Portfolio Optimizer</h2>
         <div class="portfolio-inputs">
@@ -70,7 +69,6 @@
         <div id="optimizationResult" class="result"></div>
     </div>
 
-    <!-- Qubit Investment Game -->
     <div class="tool-container">
         <h2>Quantum Investment Simulator</h2>
         <div class="quantum-visual" id="quantumSphere">
@@ -87,7 +85,7 @@
     </div>
 
     <script>
-        // Portfolio Optimizer Logic
+
         function addAssetField() {
             const newInput = document.createElement('div');
             newInput.innerHTML = `
@@ -112,7 +110,6 @@
                 }
             });
 
-            // Simulated quantum-inspired optimization
             const optimized = assets.map(asset => ({
                 ...asset,
                 allocation: Math.round((1 / asset.risk) * 1000) / 10
@@ -130,7 +127,6 @@
             `;
         }
 
-        // Qubit Game Logic
         function updateQubit() {
             const state0 = document.getElementById('state0').value;
             const state1 = document.getElementById('state1').value;
