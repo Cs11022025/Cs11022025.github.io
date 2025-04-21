@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Computing in Asset Management</title>
+    <style>
+        .tool-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        .quantum-visual {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #0f0f0f, #2a2a2a);
+            margin: 20px 0;
+            position: relative;
+        }
+        .qubit-dot {
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        .portfolio-inputs {
+            margin: 10px 0;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Quantum Portfolio Optimizer -->
+    <div class="tool-container">
+        <h2>Quantum Portfolio Optimizer</h2>
+        <div class="portfolio-inputs">
+            <div id="assetInputs">
+                <div>
+                    <input type="text" placeholder="Asset name" class="asset-name">
+                    <input type="number" placeholder="Expected return (%)" class="asset-return">
+                    <input type="number" placeholder="Risk level (1-10)" class="asset-risk">
+                </div>
+            </div>
+            <button onclick="addAssetField()">Add Asset</button>
+            <button onclick="optimizePortfolio()">Run Quantum Optimization</button>
+        </div>
+        <div id="optimizationResult" class="result"></div>
+    </div>
+
+    <!-- Qubit Investment Game -->
+    <div class="tool-container">
+        <h2>Quantum Investment Simulator</h2>
+        <div class="quantum-visual" id="quantumSphere">
+            <div class="qubit-dot" id="qubitDot"></div>
+        </div>
+        <div>
+            <label>|0⟩ (Conservative): </label>
+            <input type="range" id="state0" min="0" max="100" value="50" oninput="updateQubit()">
+            <br>
+            <label>|1⟩ (Aggressive): </label>
+            <input type="range" id="state1" min="0" max="100" value="50" oninput="updateQubit()">
+        </div>
+        <div id="probabilityDisplay" class="result"></div>
+    </div>
+
+    <script>
+        // Portfolio Optimizer Logic
+        function addAssetField() {
+            const newInput = document.createElement('div');
+            newInput.innerHTML = `
+                <input type="text" placeholder="Asset name" class="asset-name">
+                <input type="number" placeholder="Expected return (%)" class="asset-return">
+                <input type="number" placeholder="Risk level (1-10)" class="asset-risk">
+            `;
+            document.getElementById('assetInputs').appendChild(newInput);
+        }
+
+        function optimizePortfolio() {
+            const assets = [];
+            document.querySelectorAll('.asset-name').forEach((nameInput, index) => {
+                const returnInput = document.querySelectorAll('.asset-return')[index];
+                const riskInput = document.querySelectorAll('.asset-risk')[index];
+                if (nameInput.value && returnInput.value && riskInput.value) {
+                    assets.push({
+                        name: nameInput.value,
+                        return: parseFloat(returnInput.value),
+                        risk: parseFloat(riskInput.value)
+                    });
+                }
+            });
+
+            // Simulated quantum-inspired optimization
+            const optimized = assets.map(asset => ({
+                ...asset,
+                allocation: Math.round((1 / asset.risk) * 1000) / 10
+            }));
+
+            const totalAllocation = optimized.reduce((sum, a) => sum + a.allocation, 0);
+            const resultHtml = optimized.map(a => `
+                <div>${a.name}: ${((a.allocation / totalAllocation) * 100).toFixed(1)}%</div>
+            `).join('');
+            
+            document.getElementById('optimizationResult').innerHTML = `
+                <h4>Optimized Portfolio:</h4>
+                ${resultHtml}
+                <p>Quantum algorithm suggestion based on risk superposition</p>
+            `;
+        }
+
+        // Qubit Game Logic
+        function updateQubit() {
+            const state0 = document.getElementById('state0').value;
+            const state1 = document.getElementById('state1').value;
+            const total = parseInt(state0) + parseInt(state1);
+            
+            const prob0 = (state0 / total * 100).toFixed(1);
+            const prob1 = (state1 / total * 100).toFixed(1);
+            
+            const xPos = (state1 / total) * 180;
+            const yPos = 90 + Math.sin((state1 / total) * Math.PI) * 80;
+            
+            document.getElementById('qubitDot').style.left = xPos + 'px';
+            document.getElementById('qubitDot').style.top = yPos + 'px';
+            
+            document.getElementById('probabilityDisplay').innerHTML = `
+                Probability Distribution:<br>
+                |0⟩: ${prob0}% (Conservative Assets)<br>
+                |1⟩: ${prob1}% (Aggressive Assets)<br><br>
+                Expected Return Variance: ${(prob1 * 0.5).toFixed(1)}%<br>
+                Quantum Entanglement Factor: ${Math.abs(prob0 - prob1).toFixed(1)}%
+            `;
+        }
+    </script>
+</body>
+</html>
